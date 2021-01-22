@@ -6,10 +6,16 @@ export = (app: Probot) => {
     if (context.payload.deleted) {
       return;
     }
-    const statusArgs = context.repo({sha: context.payload.after, context: "great-app"});
-    await context.octokit.repos.createCommitStatus({state: "pending", description: "started", ...statusArgs});
+    const statusArgs1 = context.repo({sha: context.payload.after, context: "great-app"});
+    const statusArgs2 = context.repo({sha: context.payload.after, context: "great-app-2"});
+    const statusArgs3 = context.repo({sha: context.payload.after, context: "great-app-3"});
+    await context.octokit.repos.createCommitStatus({state: "pending", description: "started 1", ...statusArgs1});
+    await context.octokit.repos.createCommitStatus({state: "pending", description: "started 2", ...statusArgs2});
+    await context.octokit.repos.createCommitStatus({state: "pending", description: "started 3", ...statusArgs3});
     await delay(10000);
-    await context.octokit.repos.createCommitStatus({state: "success", description: "AOK BOSS", ...statusArgs});
+    await context.octokit.repos.createCommitStatus({state: "success", description: "AOK BOSS 1", ...statusArgs1});
+    context.octokit.repos.createCommitStatus({state: "failure", description: "AOK BOSS 2", ...statusArgs2});
+    context.octokit.repos.createCommitStatus({state: "success", description: "AOK BOSS 3", ...statusArgs3});
   });
 };
 
