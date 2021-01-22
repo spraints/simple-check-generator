@@ -1,15 +1,17 @@
 # simple-check-generator
 
-> A GitHub App built with [Probot](https://github.com/probot/probot) that Debugging web hooks
+> A GitHub App built with [Probot](https://github.com/probot/probot) to debug something
 
 ## Setup
+
+Create a GitHub app. Copy `.env.example` to `.env` and fill in the details.
 
 ```sh
 # Install dependencies
 npm install
 
-# Compile
-npm build
+# Check for errors
+npm run-script build
 
 # Run the bot
 npm start
@@ -24,12 +26,6 @@ docker build -t simple-check-generator .
 # 2. Start container
 docker run -e APP_ID=<app-id> -e PRIVATE_KEY=<pem-value> simple-check-generator
 ```
-
-## Contributing
-
-If you have suggestions for how simple-check-generator could be improved, or want to report a bug, open an issue! We'd love all and any contributions.
-
-For more, check out the [Contributing Guide](CONTRIBUTING.md).
 
 ## License
 
