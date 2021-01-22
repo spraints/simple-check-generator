@@ -4,4 +4,4 @@ set -e
 set -o nounset
 
 . .env
-exec bundle exec ruby app.rb
+exec bundle exec bin/rails server
